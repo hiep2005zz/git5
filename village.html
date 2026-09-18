@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đại Sảnh Ngũ Đại Làng Nhẫn Giả & Akatsuki | Uchiha Universe</title>
+    <meta name="description" content="Đại Sảnh lựa chọn Làng Nhẫn Giả - Konoha, Suna, Kumo, Kiri, Iwa và Tổ chức Akatsuki.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-red: #ff1e42;
+            --primary-red-glow: rgba(255, 30, 66, 0.6);
+            --rinnegan-purple: #9b4de0;
+            --rinnegan-purple-glow: rgba(155, 77, 224, 0.5);
+            --konoha-green: #10b981;
+            --konoha-glow: rgba(16, 185, 129, 0.5);
+            --suna-gold: #f59e0b;
+            --suna-glow: rgba(245, 158, 11, 0.5);
+            --kumo-cyan: #06b6d4;
+            --kumo-glow: rgba(6, 182, 212, 0.5);
+            --kiri-blue: #3b82f6;
+            --kiri-glow: rgba(59, 130, 246, 0.5);
+            --iwa-amber: #d97706;
+            --iwa-glow: rgba(217, 119, 6, 0.5);
+            --akatsuki-red: #dc2626;
+            --akatsuki-glow: rgba(220, 38, 38, 0.7);
+
+            --dark-bg: #07070c;
+            --dark-card: rgba(18, 14, 28, 0.68);
+            --border-glass: rgba(255, 255, 255, 0.12);
+            --text-main: #f0f3f8;
+            --text-muted: #9faec2;
+            --font-display: 'Cinzel', 'Orbitron', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* Video Background Container */
+        .video-bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .video-bg-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1);
+            filter: contrast(115%) saturate(120%) brightness(102%);
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        /* Dynamic Overlay */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 75% 20%, rgba(155, 77, 224, 0.18) 0%, transparent 60%),
+                radial-gradient(circle at 20% 80%, rgba(255, 30, 66, 0.18) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(7, 7, 12, 0.85) 0%, rgba(10, 8, 16, 0.65) 45%, rgba(7, 7, 12, 0.92) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Floating Chakra Particle Effect */
+        .chakra-particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.8), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255, 50, 80, 0.6), transparent),
+                radial-gradient(2px 2px at 90px 40px, rgba(155, 77, 224, 0.7), transparent),
+                radial-gradient(3px 3px at 150px 120px, rgba(6, 182, 212, 0.6), transparent);
+            background-repeat: repeat;
+            background-size: 250px 250px;
+            animation: floatChakra 25s linear infinite;
+            opacity: 0.35;
+        }
+
+        @keyframes floatChakra {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-250px) rotate(5deg); }
+        }
+
+        /* Navbar Header */
+        header.navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 5%;
+            z-index: 100;
+            background: rgba(10, 8, 16, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            transition: var(--transition);
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .village-symbol-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #ff3355;
+            box-shadow: 0 0 15px rgba(255, 30, 66, 0.4);
+            transition: var(--transition);
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #ffffff, #ff7e90, #c499f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* User Profile Status Badge */
+        .user-profile-widget {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .ninja-badge-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 16px 6px 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            border-radius: 40px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .ninja-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ff2a4b 30%, #850012 85%);
+            border: 2px solid #ff4766;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            color: #fff;
+            box-shadow: 0 0 12px var(--primary-red-glow);
+        }
+
+        .ninja-meta {
+            text-align: left;
+        }
+
+        .ninja-name {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ninja-rank-tag {
+            font-size: 0.68rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: rgba(155, 77, 224, 0.3);
+            color: #c499f5;
+            font-weight: 700;
+            border: 1px solid rgba(155, 77, 224, 0.4);
+            text-transform: uppercase;
+        }
+
+        .ninja-village-info {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
+        .ninja-village-info strong {
+            color: #ff7e90;
+        }
+
+        .btn-logout {
+            padding: 0.55rem 1.1rem;
+            background: rgba(220, 38, 38, 0.18);
+            border: 1px solid rgba(220, 38, 38, 0.4);
+            border-radius: 30px;
+            color: #fca5a5;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-logout:hover {
+            background: #dc2626;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Main Container */
+        main.village-container {
+            max-width: 1380px;
+            margin: 0 auto;
+            padding: 7.5rem 5% 5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero Banner */
+        .village-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            background: rgba(155, 77, 224, 0.15);
+            border: 1px solid rgba(155, 77, 224, 0.4);
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #c499f5;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+            font-weight: 900;
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 20%, #ff4b68 60%, #bd86f5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 30, 66, 0.4);
+        }
+
+        .hero-desc {
+            max-width: 820px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Current Active Village Alert Banner */
+        .active-pledge-banner {
+            max-width: 850px;
+            margin: 0 auto 3.5rem;
+            padding: 1.2rem 2rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            backdrop-filter: blur(14px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+        }
+
+        .active-pledge-banner.pledged {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 30px rgba(255, 30, 66, 0.25);
+            background: linear-gradient(90deg, rgba(255, 30, 66, 0.12), rgba(155, 77, 224, 0.12));
+        }
+
+        .pledge-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .pledge-icon {
+            font-size: 1.8rem;
+            color: #ff3355;
+        }
+
+        .pledge-text h4 {
+            font-size: 0.95rem;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .pledge-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Village Cards Grid */
+        .villages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.2rem;
+        }
+
+        /* Card Base (Glassmorphism 3D Hover) */
+        .village-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            padding: 2.5rem 2.2rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .village-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .village-card:hover {
+            transform: translateY(-10px) scale(1.015);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Village Themes */
+        /* 1. Konoha */
+        .card-konoha::before { background: linear-gradient(90deg, #10b981, #f59e0b); }
+        .card-konoha:hover { border-color: var(--konoha-green); box-shadow: 0 20px 45px rgba(0,0,0,0.8), 0 0 30px var(--konoha-glow); }
+        .card-konoha .card-badge { color: var(--konoha-green); border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.12); }
+        .card-konoha .village-icon { color: var(--konoha-green); }
+        .card-konoha .btn-join { background: linear-gradient(135deg, #059669, #10b981); box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
+
+        /* 2. Suna */
+        .card-suna::before { background: linear-gradient(90deg, #f59e0b, #b45309); }
+        .card-suna:hover { border-color: var(--suna-gold); box-shadow: 0 20px 45px rgba(0,0,0,0.8), 0 0 30px var(--suna-glow); }
+        .card-suna .card-badge { color: var(--suna-gold); border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.12); }
+        .card-suna .village-icon { color: var(--suna-gold); }
+        .card-suna .btn-join { background: linear-gradient(135deg, #d97706, #f59e0b); box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); }
+
+        /* 3. Kumo */
+        .card-kumo::before { background: linear-gradient(90deg, #06b6d4, #3b82f6); }
+        .card-kumo:hover { border-color: var(--kumo-cyan); box-shadow: 0 20px 45px rgba(0,0,0,0.8), 0 0 30px var(--kumo-glow); }
+        .card-kumo .card-badge { color: var(--kumo-cyan); border-color: rgba(6, 182, 212, 0.4); background: rgba(6, 182, 212, 0.12); }
+        .card-kumo .village-icon { color: var(--kumo-cyan); }
+        .card-kumo .btn-join { background: linear-gradient(135deg, #0284c7, #06b6d4); box-shadow: 0 0 20px rgba(6, 182, 212, 0.4); }
+
+        /* 4. Kiri */
+        .card-kiri::before { background: linear-gradient(90deg, #3b82f6, #6366f1); }
+        .card-kiri:hover { border-color: var(--kiri-blue); box-shadow: 0 20px 45px rgba(0,0,0,0.8), 0 0 30px var(--kiri-glow); }
+        .card-kiri .card-badge { color: var(--kiri-blue); border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.12); }
+        .card-kiri .village-icon { color: var(--kiri-blue); }
+        .card-kiri .btn-join { background: linear-gradient(135deg, #2563eb, #3b82f6); box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+
+        /* 5. Iwa */
+        .card-iwa::before { background: linear-gradient(90deg, #d97706, #78350f); }
+        .card-iwa:hover { border-color: var(--iwa-amber); box-shadow: 0 20px 45px rgba(0,0,0,0.8), 0 0 30px var(--iwa-glow); }
+        .card-iwa .card-badge { color: var(--iwa-amber); border-color: rgba(217, 119, 6, 0.4); background: rgba(217, 119, 6, 0.12); }
+        .card-iwa .village-icon { color: var(--iwa-amber); }
+        .card-iwa .btn-join { background: linear-gradient(135deg, #b45309, #d97706); box-shadow: 0 0 20px rgba(217, 119, 6, 0.4); }
+
+        /* 6. Akatsuki */
+        .card-akatsuki {
+            background: rgba(16, 10, 20, 0.85);
+            border-color: rgba(220, 38, 38, 0.35);
+        }
+        .card-akatsuki::before { background: linear-gradient(90deg, #dc2626, #7f1d1d, #9b4de0); }
+        .card-akatsuki:hover { border-color: var(--akatsuki-red); box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 40px var(--akatsuki-glow); }
+        .card-akatsuki .card-badge { color: #f87171; border-color: rgba(220, 38, 38, 0.5); background: rgba(220, 38, 38, 0.2); }
+        .card-akatsuki .village-icon { color: #ef4444; }
+        .card-akatsuki .btn-join { background: linear-gradient(135deg, #b91c1c, #dc2626, #7e22ce); box-shadow: 0 0 25px rgba(220, 38, 38, 0.6); }
+
+        /* Card Top Header */
+        .card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.8rem;
+        }
+
+        .village-icon-wrap {
+            width: 65px;
+            height: 65px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .village-card:hover .village-icon-wrap {
+            transform: scale(1.1) rotate(6deg);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .card-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 20px;
+            border: 1px solid;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .village-name {
+            font-family: var(--font-display);
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.4rem;
+        }
+
+        .village-country {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .village-specs {
+            margin-bottom: 1.8rem;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 1rem 1.2rem;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .spec-label {
+            color: var(--text-muted);
+        }
+
+        .spec-value {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .village-desc {
+            font-size: 0.92rem;
+            color: #cbd5e1;
+            line-height: 1.65;
+            margin-bottom: 2rem;
+        }
+
+        /* Action Buttons */
+        .btn-join {
+            width: 100%;
+            padding: 0.9rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-join:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.15);
+        }
+
+        .btn-join.joined {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba(255, 255, 255, 0.4) !important;
+            color: #a7f3d0 !important;
+            box-shadow: none !important;
+            cursor: default;
+        }
+
+        /* Confirmation Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(14px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: #110d1c;
+            border: 1px solid var(--primary-red);
+            box-shadow: 0 0 45px rgba(255, 30, 66, 0.4);
+            border-radius: 22px;
+            max-width: 520px;
+            width: 100%;
+            padding: 2.5rem;
+            position: relative;
+            transform: scale(0.95);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-icon-seal {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ff2a4b 30%, #850012 85%);
+            border: 2px solid #ff4766;
+            margin: 0 auto 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+            box-shadow: 0 0 25px var(--primary-red-glow);
+            animation: pulseSeal 2s infinite alternate;
+        }
+
+        @keyframes pulseSeal {
+            0% { transform: scale(1); box-shadow: 0 0 15px var(--primary-red-glow); }
+            100% { transform: scale(1.08); box-shadow: 0 0 35px var(--primary-red-glow); }
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-modal-cancel {
+            flex: 1;
+            padding: 0.85rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-glass);
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-modal-cancel:hover {
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .btn-modal-confirm {
+            flex: 1.4;
+            padding: 0.85rem;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #e50914, #9b4de0);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--primary-red-glow);
+            transition: var(--transition);
+        }
+
+        .btn-modal-confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px var(--primary-red-glow);
+        }
+
+        /* Toast Notification */
+        .notification-toast {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            padding: 1rem 1.4rem;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2000;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transform: translateX(120%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .notification-toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .notification-toast.success {
+            background: rgba(16, 185, 129, 0.9);
+            border: 1px solid #34d399;
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.45);
+        }
+
+        .notification-toast.error {
+            background: rgba(225, 29, 72, 0.92);
+            border: 1px solid #fb7185;
+            box-shadow: 0 0 25px rgba(225, 29, 72, 0.55);
+        }
+
+        @media (max-width: 768px) {
+            .villages-grid {
+                grid-template-columns: 1fr;
+            }
+            .ninja-badge-card {
+                padding: 4px 10px;
+            }
+            .ninja-rank-tag {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video Background (Tận dụng video có sẵn) -->
+    <div class="video-bg-container">
+        <video id="villageBgVideo" autoplay muted loop playsinline>
+            <source src="128646-741704858_medium.mp4" type="video/mp4">
+            <source src="190558-888122702_medium.mp4" type="video/mp4">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-mysterious-fog-in-a-dark-forest-41551-large.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Overlay & Hạt Chakra -->
+    <div class="video-overlay"></div>
+    <div class="chakra-particles"></div>
+
+    <!-- Top Navbar -->
+    <header class="navbar">
+        <a href="index.html" class="logo-box">
+            <div class="village-symbol-badge">
+                <i class="fa-solid fa-dharmachakra"></i>
+            </div>
+            <span class="logo-text">SHINOBI ALLIANCE</span>
+        </a>
+
+        <!-- Ninja Status & Logout Button -->
+        <div class="user-profile-widget">
+            <div class="ninja-badge-card" id="ninjaProfileCard">
+                <div class="ninja-avatar" id="userAvatar">
+                    <i class="fa-solid fa-user-ninja"></i>
+                </div>
+                <div class="ninja-meta">
+                    <div class="ninja-name">
+                        <span id="userNameDisplay">Nhẫn Giả</span>
+                        <span class="ninja-rank-tag" id="userRankDisplay">Genin</span>
+                    </div>
+                    <div class="ninja-village-info">Làng: <strong id="userVillageDisplay">Nhẫn giả tự do</strong></div>
+                </div>
+            </div>
+
+            <button class="btn-logout" id="btnLogout" title="Thoát phiên đăng nhập">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Đăng Xuất</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="village-container">
+        <!-- Hero Title Banner -->
+        <div class="village-hero">
+            <div class="hero-tag">
+                <i class="fa-solid fa-scroll"></i>
+                <span>Đại Hội Ngũ Đại Quốc Nhẫn Giả</span>
+            </div>
+            <h1 class="hero-title">NGŨ ĐẠI CƯỜNG QUỐC & HẮC ÁM</h1>
+            <p class="hero-desc">
+                Hãy chọn đức tin và con đường nhẫn đạo của riêng bạn. Làng bạn chọn sẽ quyết định vận mệnh, nguồn Chakra và Huyết Kế Giới Hạn suốt cuộc đời Nhẫn Giả.
+            </p>
+        </div>
+
+        <!-- Current Pledge Banner -->
+        <div class="active-pledge-banner" id="pledgeBanner">
+            <div class="pledge-info">
+                <div class="pledge-icon">
+                    <i class="fa-solid fa-shield-halved" id="pledgeIcon"></i>
+                </div>
+                <div class="pledge-text">
+                    <h4 id="pledgeTitle">Trạng thái: Nhẫn giả tự do / Lãng khách</h4>
+                    <p id="pledgeDesc">Bạn chưa khắc gia huy lên băng trán. Hãy lựa chọn một thế lực bên dưới để phụng sự!</p>
+                </div>
+            </div>
+            <a href="index.html" class="btn-modal-cancel" style="text-decoration: none; text-align: center; white-space: nowrap;">
+                <i class="fa-solid fa-house"></i> Về Trang Chủ
+            </a>
+        </div>
+
+        <!-- 6 Village Cards Showcase Grid -->
+        <div class="villages-grid">
+
+            <!-- 1. LÀNG LÁ (KONOHAGAKURE) -->
+            <div class="village-card card-konoha" id="cardKonoha">
+                <div>
+                    <div class="card-top">
+                        <div class="village-icon-wrap">
+                            <i class="fa-solid fa-leaf village-icon"></i>
+                        </div>
+                        <span class="card-badge">Hỏa Quốc • Konoha</span>
+                    </div>
+
+                    <h2 class="village-name">LÀNG LÁ</h2>
+                    <div class="village-country"><i class="fa-solid fa-fire"></i> Lãnh thổ Hỏa Quốc • Biểu tượng Ý Chí Lửa</div>
+
+                    <div class="village-specs">
+                        <div class="spec-item"><span class="spec-label">Thủ Lĩnh Tối Cao:</span><span class="spec-value">Hokage</span></div>
+                        <div class="spec-item"><span class="spec-label">Nhẫn Thuật Đặc Trưng:</span><span class="spec-value">Rasengan, Mộc Độn, Phân Thân</span></div>
+                        <div class="spec-item"><span class="spec-label">Tôn Chỉ:</span><span class="spec-value">Bảo vệ thế hệ mầm non tương lai</span></div>
+                    </div>
+
+                    <p class="village-desc">
+                        Cái nôi của những huyền thoại vĩ đại nhất lịch sử nhẫn giả: Hashirama, Madara, Minato, Naruto. Nơi ánh lửa của sự kiên định không bao giờ tắt.
+                    </p>
+                </div>
+
+                <button class="btn-join" onclick="promptJoinVillage('Làng Lá (Konohagakure)', 'fa-leaf', '#10b981')">
+                    <i class="fa-solid fa-leaf"></i>
+                    <span class="btn-text">Gia Nhập Làng Lá</span>
+                </button>
+            </div>
+
+            <!-- 2. LÀNG CÁT (SUNAGAKURE) -->
+            <div class="village-card card-suna" id="cardSuna">
+                <div>
+                    <div class="card-top">
+                        <div class="village-icon-wrap">
+                            <i class="fa-solid fa-wind village-icon"></i>
+                        </div>
+                        <span class="card-badge">Phong Quốc • Suna</span>
+                    </div>
+
+                    <h2 class="village-name">LÀNG CÁT</h2>
+                    <div class="village-country"><i class="fa-solid fa-tornado"></i> Lãnh thổ Phong Quốc • Bão Cát Sa Mạc</div>
+
+                    <div class="village-specs">
+                        <div class="spec-item"><span class="spec-label">Thủ Lĩnh Tối Cao:</span><span class="spec-value">Kazekage (Gaara)</span></div>
+                        <div class="spec-item"><span class="spec-label">Nhẫn Thuật Đặc Trưng:</span><span class="spec-value">Sa Thuật, Khôi Lỗi Thuật (Thuật Rối)</span></div>
+                        <div class="spec-item"><span class="spec-label">Tôn Chỉ:</span><span class="spec-value">Bền bỉ, sắt đá vượt qua bão sa mạc</span></div>
+                    </div>
+
+                    <p class="village-desc">
+                        Nằm giữa sa mạc cằn cỗi và khắc nghiệt. Các nhẫn giả Làng Cát nổi danh với sự tinh thông về thuật điều khiển cát và điều khiển con rối tử thần.
+                    </p>
+                </div>
+
+                <button class="btn-join" onclick="promptJoinVillage('Làng Cát (Sunagakure)', 'fa-wind', '#f59e0b')">
+                    <i class="fa-solid fa-wind"></i>
+                    <span class="btn-text">Gia Nhập Làng Cát</span>
+                </button>
+            </div>
+
+            <!-- 3. LÀNG MÂY (KUMOGAKURE) -->
+            <div class="village-card card-kumo" id="cardKumo">
+                <div>
+                    <div class="card-top">
+                        <div class="village-icon-wrap">
+                            <i class="fa-solid fa-bolt-lightning village-icon"></i>
+                        </div>
+                        <span class="card-badge">Lôi Quốc • Kumo</span>
+                    </div>
+
+                    <h2 class="village-name">LÀNG MÂY</h2>
+                    <div class="village-country"><i class="fa-solid fa-cloud-bolt"></i> Lãnh thổ Lôi Quốc • Sấm Sét Đỉnh Núi</div>
+
+                    <div class="village-specs">
+                        <div class="spec-item"><span class="spec-label">Thủ Lĩnh Tối Cao:</span><span class="spec-value">Raikage (Ay & Killer Bee)</span></div>
+                        <div class="spec-item"><span class="spec-label">Nhẫn Thuật Đặc Trưng:</span><span class="spec-value">Lôi Độn Thể Thuật, Kiếm Thuật Nhị Đao</span></div>
+                        <div class="spec-item"><span class="spec-label">Tôn Chỉ:</span><span class="spec-value">Tốc độ tia chớp & Sức mạnh cơ bắp tuyệt đối</span></div>
+                    </div>
+
+                    <p class="village-desc">
+                        Ngự trị trên những đỉnh núi cao vút chạm mây. Nơi sinh ra những chiến binh thể thuật bọc sấm sét với tốc độ sánh ngang tia chớp.
+                    </p>
+                </div>
+
+                <button class="btn-join" onclick="promptJoinVillage('Làng Mây (Kumogakure)', 'fa-bolt-lightning', '#06b6d4')">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                    <span class="btn-text">Gia Nhập Làng Mây</span>
+                </button>
+            </div>
+
+            <!-- 4. LÀNG SƯƠNG MÙ (KIRIGAKURE) -->
+            <div class="village-card card-kiri" id="cardKiri">
+                <div>
+                    <div class="card-top">
+                        <div class="village-icon-wrap">
+                            <i class="fa-solid fa-water village-icon"></i>
+                        </div>
+                        <span class="card-badge">Thủy Quốc • Kiri</span>
+                    </div>
+
+                    <h2 class="village-name">LÀNG SƯƠNG MÙ</h2>
+                    <div class="village-country"><i class="fa-solid fa-droplet"></i> Lãnh thổ Thủy Quốc • Quần Đảo Sương Đỏ</div>
+
+                    <div class="village-specs">
+                        <div class="spec-item"><span class="spec-label">Thủ Lĩnh Tối Cao:</span><span class="spec-value">Mizukage (Mei Terumi)</span></div>
+                        <div class="spec-item"><span class="spec-label">Nhẫn Thuật Đặc Trưng:</span><span class="spec-value">Thất Kiếm, Ẩn Vụ Thuật, Băng Độn</span></div>
+                        <div class="spec-item"><span class="spec-label">Tôn Chỉ:</span><span class="spec-value">Ám sát trong tĩnh lặng, lạnh lùng như băng</span></div>
+                    </div>
+
+                    <p class="village-desc">
+                        Nổi tiếng với truyền thuyết Thất Kiếm Làng Sương Mù và thuật ẩn thân trong làn sương mù dày đặc, tiêu diệt mục tiêu chỉ trong chớp mắt.
+                    </p>
+                </div>
+
+                <button class="btn-join" onclick="promptJoinVillage('Làng Sương Mù (Kirigakure)', 'fa-water', '#3b82f6')">
+                    <i class="fa-solid fa-water"></i>
+                    <span class="btn-text">Gia Nhập Làng Sương Mù</span>
+                </button>
+            </div>
+
+            <!-- 5. LÀNG ĐÁ (IWAGAKURE) -->
+            <div class="village-card card-iwa" id="cardIwa">
+                <div>
+                    <div class="card-top">
+                        <div class="village-icon-wrap">
+                            <i class="fa-solid fa-mountain village-icon"></i>
+                        </div>
+                        <span class="card-badge">Thổ Quốc • Iwa</span>
+                    </div>
+
+                    <h2 class="village-name">LÀNG ĐÁ</h2>
+                    <div class="village-country"><i class="fa-solid fa-cubes"></i> Lãnh thổ Thổ Quốc • Núi Đá Phòng Thủ</div>
+
+                    <div class="village-specs">
+                        <div class="spec-item"><span class="spec-label">Thủ Lĩnh Tối Cao:</span><span class="spec-value">Tsuchikage (Ohnoki)</span></div>
+                        <div class="spec-item"><span class="spec-label">Nhẫn Thuật Đặc Trưng:</span><span class="spec-value">Trần Độn (Jinton), Thổ Độn Hóa Cứng</span></div>
+                        <div class="spec-item"><span class="spec-label">Tôn Chỉ:</span><span class="spec-value">Vững như bàn thạch, kỷ luật thép</span></div>
+                    </div>
+
+                    <p class="village-desc">
+                        Được bao bọc bởi những rặng núi đá hiểm trở tự nhiên. Sở hữu Huyết Kế Chọn Lọc "Trần Độn" có khả năng phân rã mọi vật chất thành tro bụi.
+                    </p>
+                </div>
+
+                <button class="btn-join" onclick="promptJoinVillage('Làng Đá (Iwagakure)', 'fa-mountain', '#d97706')">
+                    <i class="fa-solid fa-mountain"></i>
+                    <span class="btn-text">Gia Nhập Làng Đá</span>
+                </button>
+            </div>
+
+            <!-- 6. TỔ CHỨC AKATSUKI -->
+            <div class="village-card card-akatsuki" id="cardAkatsuki">
+                <div>
+                    <div class="card-top">
+                        <div class="village-icon-wrap">
+                            <i class="fa-solid fa-cloud-moon village-icon"></i>
+                        </div>
+                        <span class="card-badge">Phản Nhẫn • Akatsuki</span>
+                    </div>
+
+                    <h2 class="village-name">TỔ CHỨC AKATSUKI</h2>
+                    <div class="village-country"><i class="fa-solid fa-skull"></i> Ngoài Vòng Pháp Luật • Áo Choàng Mây Đỏ</div>
+
+                    <div class="village-specs">
+                        <div class="spec-item"><span class="spec-label">Thủ Lĩnh Bí Ẩn:</span><span class="spec-value">Pain / Obito / Madara</span></div>
+                        <div class="spec-item"><span class="spec-label">Nhẫn Thuật Tối Thượng:</span><span class="spec-value">Sharingan, Rinnegan, Tsukuyomi Vô Hạn</span></div>
+                        <div class="spec-item"><span class="spec-label">Tôn Chỉ:</span><span class="spec-value">Hòa bình tuyệt đối qua nỗi đau & Nguyệt Nhãn</span></div>
+                    </div>
+
+                    <p class="village-desc">
+                        Tập hợp những Ninja cấp S nguy hiểm nhất mọi thời đại. Sẵn sàng phá hủy trật tự cũ để xây dựng thế giới hoàn hảo không còn hận thù.
+                    </p>
+                </div>
+
+                <button class="btn-join" onclick="promptJoinVillage('Tổ Chức Akatsuki', 'fa-cloud-moon', '#dc2626')">
+                    <i class="fa-solid fa-fire"></i>
+                    <span class="btn-text">Khắc Ấn Phản Nhẫn (Gia Nhập)</span>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal Xác Nhận Phong Ấn Gia Nhập Làng -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-icon-seal" id="modalSealIcon">
+                <i class="fa-solid fa-stamp"></i>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem;" id="modalVillageTarget">XÁC NHẬN GIA NHẬP</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;" id="modalVillageMsg">
+                Bạn có chắc chắn muốn khắc gia huy này lên băng trán và nguyện phụng sự hết mình cho làng?
+            </p>
+            <div class="modal-buttons">
+                <button class="btn-modal-cancel" id="btnCancelJoin">Hủy Bỏ</button>
+                <button class="btn-modal-confirm" id="btnConfirmJoin">Khắc Ấn Ngay</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="notification-toast" id="toast">
+        <i class="fa-solid fa-circle-info" id="toastIcon"></i>
+        <span id="toastMsg">Thông báo</span>
+    </div>
+
+    <!-- Logic Javascript & Auth Guard -->
+    <script>
+        const API_BASE = window.location.origin.includes('5000') 
+            ? window.location.origin 
+            : 'http://localhost:5000';
+
+        // 1. RÀO BẢO VỆ (AUTH GUARD): Kiểm tra phiên đăng nhập
+        let currentNinja = JSON.parse(localStorage.getItem('current_ninja'));
+
+        if (!currentNinja || !currentNinja.email) {
+            alert('⚠️ CẢNH BÁO: Chưa có Thông Hành Nhẫn Giả! Vui lòng đăng nhập để bước vào Đại Sảnh.');
+            window.location.href = 'login.html';
+        }
+
+        // Cập nhật Profile Header
+        const userNameDisplay = document.getElementById('userNameDisplay');
+        const userRankDisplay = document.getElementById('userRankDisplay');
+        const userVillageDisplay = document.getElementById('userVillageDisplay');
+        const pledgeTitle = document.getElementById('pledgeTitle');
+        const pledgeDesc = document.getElementById('pledgeDesc');
+        const pledgeBanner = document.getElementById('pledgeBanner');
+
+        function updateProfileUI() {
+            if (!currentNinja) return;
+            userNameDisplay.textContent = currentNinja.name || 'Nhẫn Giả';
+            userRankDisplay.textContent = currentNinja.rank || 'Genin';
+            const curVil = currentNinja.village || 'Nhẫn giả tự do';
+            userVillageDisplay.textContent = curVil;
+
+            if (curVil && curVil !== 'Nhẫn giả tự do') {
+                pledgeBanner.classList.add('pledged');
+                pledgeTitle.innerHTML = `Đã Phụng Sự: <span style="color: #ff3355; font-weight: 800;">${curVil}</span>`;
+                pledgeDesc.textContent = `Băng trán nhẫn giả của bạn đã được khắc ấn tín vĩnh cửu của ${curVil}. Bạn có thể chọn đổi làng bất kỳ lúc nào.`;
+            } else {
+                pledgeBanner.classList.remove('pledged');
+                pledgeTitle.textContent = 'Trạng thái: Nhẫn giả tự do / Lãng khách';
+                pledgeDesc.textContent = 'Bạn chưa khắc gia huy lên băng trán. Hãy lựa chọn một thế lực bên dưới để phụng sự!';
+            }
+
+            // Đánh dấu nút đã gia nhập
+            document.querySelectorAll('.village-card').forEach(card => {
+                const title = card.querySelector('.village-name').textContent;
+                const btn = card.querySelector('.btn-join');
+                const btnText = btn.querySelector('.btn-text');
+
+                if (curVil.includes(title)) {
+                    btn.classList.add('joined');
+                    btnText.textContent = '✓ ĐÃ GIA NHẬP';
+                } else {
+                    btn.classList.remove('joined');
+                    if (title.includes('AKATSUKI')) {
+                        btnText.textContent = 'Khắc Ấn Phản Nhẫn (Gia Nhập)';
+                    } else {
+                        btnText.textContent = `Gia Nhập ${title}`;
+                    }
+                }
+            });
+        }
+        updateProfileUI();
+
+        // 2. Xử lý Đăng Xuất
+        document.getElementById('btnLogout').addEventListener('click', () => {
+            if (confirm('Bạn có chắc chắn muốn thu hồi Chakra và đăng xuất khỏi Cổng Nhẫn Giả?')) {
+                localStorage.removeItem('current_ninja');
+                showNotification('Đã đăng xuất thành công! Hẹn gặp lại nhẫn giả.', 'success');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1000);
+            }
+        });
+
+        // 3. Xử lý Gia Nhập Làng & Modal Xác Nhận
+        const confirmModal = document.getElementById('confirmModal');
+        const modalVillageTarget = document.getElementById('modalVillageTarget');
+        const modalVillageMsg = document.getElementById('modalVillageMsg');
+        const btnCancelJoin = document.getElementById('btnCancelJoin');
+        const btnConfirmJoin = document.getElementById('btnConfirmJoin');
+        let selectedVillageToJoin = null;
+
+        function promptJoinVillage(villageName, iconClass, colorHex) {
+            selectedVillageToJoin = villageName;
+            modalVillageTarget.textContent = `KHẮC ẤN ${villageName.toUpperCase()}`;
+            modalVillageMsg.innerHTML = `Bạn có chắc chắn muốn khắc ấn tín <strong>${villageName}</strong> lên băng trán và kết nối chakra vào thế lực này?`;
+            confirmModal.classList.add('active');
+        }
+
+        btnCancelJoin.addEventListener('click', () => {
+            confirmModal.classList.remove('active');
+        });
+
+        btnConfirmJoin.addEventListener('click', async () => {
+            if (!selectedVillageToJoin) return;
+            confirmModal.classList.remove('active');
+
+            // Cập nhật Database Backend qua API
+            try {
+                await fetch(`${API_BASE}/api/select-village`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: currentNinja.email,
+                        village: selectedVillageToJoin
+                    })
+                });
+            } catch (err) {
+                console.log('Lưu offline qua localStorage');
+            }
+
+            // Lưu LocalStorage
+            currentNinja.village = selectedVillageToJoin;
+            localStorage.setItem('current_ninja', JSON.stringify(currentNinja));
+
+            updateProfileUI();
+            showNotification(`Chúc mừng bạn đã chính thức trở thành Nhẫn giả của ${selectedVillageToJoin}!`, 'success');
+        });
+
+        // Toast thông báo
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toastMsg');
+        const toastIcon = document.getElementById('toastIcon');
+        let toastTimeout;
+
+        function showNotification(message, type = 'success') {
+            clearTimeout(toastTimeout);
+            toastMsg.textContent = message;
+            toast.className = `notification-toast show ${type}`;
+            if (type === 'success') {
+                toastIcon.className = 'fa-solid fa-circle-check';
+            } else {
+                toastIcon.className = 'fa-solid fa-triangle-exclamation';
+            }
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

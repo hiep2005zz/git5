@@ -1,2 +1,1143 @@
-<p>văn bản B</p>
-<p>thu nghiem</p>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCHIHA OBITO | Kế Hoạch Nguyệt Nhãn</title>
+    <meta name="description" content="Trang chủ giới thiệu Obito Uchiha - Kế hoạch Nguyệt Nhãn, Sharingan, Rinnegan và huyền thoại gia tộc Uchiha.">
+    
+    <!-- Google Fonts: Orbitron & Plus Jakarta Sans / Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-red: #ff1e42;
+            --primary-red-glow: rgba(255, 30, 66, 0.6);
+            --sharingan-red: #d1001c;
+            --rinnegan-purple: #9b4de0;
+            --rinnegan-purple-glow: rgba(155, 77, 224, 0.5);
+            --dark-bg: #07070c;
+            --dark-card: rgba(18, 15, 28, 0.65);
+            --border-glass: rgba(255, 255, 255, 0.12);
+            --text-main: #f0f3f8;
+            --text-muted: #9faec2;
+            --font-display: 'Cinzel', 'Orbitron', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Video Background Container */
+        .video-bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .video-bg-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1); /* Không scale để giữ nguyên pixel gốc sắc nét */
+            filter: contrast(115%) saturate(120%) brightness(105%); /* Tăng tương phản, độ tươi và sáng chi tiết */
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            will-change: transform;
+        }
+
+        /* Dynamic & Mystical Overlay (Siêu trong suốt để video hiện nét 100%) */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 80% 20%, rgba(155, 77, 224, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(255, 30, 66, 0.08) 0%, transparent 50%),
+                linear-gradient(180deg, rgba(7, 7, 12, 0.15) 0%, transparent 40%, transparent 70%, rgba(7, 7, 12, 0.35) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Tối viền siêu mỏng ở góc dưới */
+        .video-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 75%, rgba(0, 0, 0, 0.2) 100%);
+            opacity: 0.3;
+        }
+
+        /* Navigation Bar */
+        header.navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 5%;
+            z-index: 100;
+            background: rgba(8, 7, 14, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glass);
+            transition: var(--transition);
+        }
+
+        header.navbar.scrolled {
+            padding: 0.85rem 5%;
+            background: rgba(6, 5, 10, 0.9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 30, 66, 0.2);
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .sharingan-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ff2a4b 30%, #850012 85%);
+            border: 2px solid #ff4766;
+            box-shadow: 0 0 15px var(--primary-red-glow);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: rotateSharingan 20s linear infinite;
+        }
+
+        .sharingan-icon::before {
+            content: '';
+            width: 9px;
+            height: 9px;
+            background: #000;
+            border-radius: 50%;
+            box-shadow: 0 0 4px #000;
+        }
+
+        .sharingan-icon .tomoe {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .sharingan-icon .tomoe-1 { top: 6px; left: 14px; }
+        .sharingan-icon .tomoe-2 { bottom: 8px; left: 7px; }
+        .sharingan-icon .tomoe-3 { bottom: 8px; right: 7px; }
+
+        @keyframes rotateSharingan {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            background: linear-gradient(90deg, #ffffff, #ff7e90, #c499f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 30, 66, 0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            position: relative;
+            padding: 6px 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-red), var(--rinnegan-purple));
+            box-shadow: 0 0 8px var(--primary-red);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 30, 66, 0.8), 0 0 20px rgba(155, 77, 224, 0.6);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0.75rem 1.65rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e50914 0%, #b80024 50%, #7e16a3 100%);
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(229, 9, 20, 0.45), 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 30px rgba(255, 30, 66, 0.75), 0 0 15px rgba(155, 77, 224, 0.6);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.06);
+            color: #f0f3f8;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border-color: rgba(255, 30, 66, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 15px rgba(155, 77, 224, 0.4);
+        }
+
+        .btn-icon-pulse {
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover .btn-icon-pulse {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            background: rgba(255, 30, 66, 0.12);
+            border: 1px solid rgba(255, 30, 66, 0.4);
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ff5271;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 20px rgba(255, 30, 66, 0.2);
+            animation: floatBadge 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatBadge {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-5px); }
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6.5vw, 5rem);
+            font-weight: 900;
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #ffffff 15%, #ff4b68 55%, #bd86f5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 35px rgba(255, 30, 66, 0.5), 0 0 70px rgba(155, 77, 224, 0.3);
+        }
+
+        .hero-sub {
+            max-width: 750px;
+            font-size: clamp(1rem, 1.8vw, 1.25rem);
+            color: #d1d9e6;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            line-height: 1.7;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-quote {
+            font-style: italic;
+            color: #ff8ca1;
+            font-weight: 500;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Sound Control Floating Pill */
+        .sound-toggle-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 99;
+            background: rgba(18, 15, 28, 0.75);
+            color: #fff;
+            border: 1px solid var(--border-glass);
+            padding: 12px 18px;
+            border-radius: 40px;
+            backdrop-filter: blur(12px);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+        }
+
+        .sound-toggle-btn:hover {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 20px var(--primary-red-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .section-features {
+            padding: 5rem 5% 7rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-tag {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--rinnegan-purple);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .glass-card {
+            background: var(--dark-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .glass-card:nth-child(2)::before {
+            background: linear-gradient(90deg, transparent, var(--rinnegan-purple), transparent);
+        }
+
+        .glass-card:nth-child(3)::before {
+            background: linear-gradient(90deg, transparent, #ff9500, transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 30, 66, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 30, 66, 0.25);
+        }
+
+        .glass-card:nth-child(2):hover {
+            border-color: rgba(155, 77, 224, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px var(--rinnegan-purple-glow);
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon-wrap {
+            width: 65px;
+            height: 65px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.8rem;
+            color: var(--primary-red);
+            transition: var(--transition);
+        }
+
+        .glass-card:nth-child(2) .card-icon-wrap {
+            color: var(--rinnegan-purple);
+        }
+
+        .glass-card:nth-child(3) .card-icon-wrap {
+            color: #ff9500;
+        }
+
+        .glass-card:hover .card-icon-wrap {
+            transform: scale(1.1) rotate(6deg);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px currentColor;
+        }
+
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .card-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .card-link:hover {
+            color: var(--primary-red);
+        }
+
+        .card-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Story Showcase Banner */
+        .showcase-banner {
+            max-width: 1280px;
+            margin: 0 auto 5rem;
+            padding: 3.5rem;
+            background: linear-gradient(135deg, rgba(30, 10, 30, 0.7) 0%, rgba(10, 5, 20, 0.85) 100%);
+            border: 1px solid rgba(255, 30, 66, 0.3);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+        }
+
+        .banner-content h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+
+        .banner-content p {
+            color: var(--text-muted);
+            max-width: 650px;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer.footer-main {
+            background: rgba(4, 3, 7, 0.95);
+            border-top: 1px solid var(--border-glass);
+            padding: 4rem 5% 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            max-width: 340px;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-display);
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--primary-red);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+            padding-left: 5px;
+            color: var(--primary-red);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 1rem;
+        }
+
+        .social-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background: var(--primary-red);
+            box-shadow: 0 0 15px var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #6d7d93;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Modal Preview Cốt Truyện */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: #110d1c;
+            border: 1px solid var(--primary-red);
+            box-shadow: 0 0 40px rgba(255, 30, 66, 0.3);
+            border-radius: 20px;
+            max-width: 650px;
+            width: 100%;
+            padding: 2.5rem;
+            position: relative;
+            transform: scale(0.95);
+            transition: var(--transition);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .showcase-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 8, 16, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                align-items: center;
+                border-bottom: 1px solid var(--border-glass);
+                transform: translateY(-150%);
+                transition: var(--transition);
+            }
+
+            .nav-links.show {
+                transform: translateY(0);
+            }
+
+            .nav-actions .btn-cta-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video Background -->
+    <div class="video-bg-container">
+        <video id="bgVideo" autoplay muted loop playsinline poster="">
+            <!-- Thử nạp video cục bộ từ project theo yêu cầu -->
+            <source src="128646-741704858_medium.mp4" type="video/mp4">
+            <!-- Fallback dự phòng video Anime Dark/Mystic sống động nếu file cục bộ chưa sẵn sàng -->
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-mysterious-fog-in-a-dark-forest-41551-large.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ thẻ video.
+        </video>
+    </div>
+
+    <!-- Overlay huyền ảo (Đỏ & Tím Uchiha) -->
+    <div class="video-overlay"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <a href="#" class="logo-box" id="logoLink">
+            <div class="sharingan-icon">
+                <span class="tomoe tomoe-1"></span>
+                <span class="tomoe tomoe-2"></span>
+                <span class="tomoe tomoe-3"></span>
+            </div>
+            <span class="logo-text">UCHIHA LEGACY</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero" class="active" id="navHome">Trang Chủ</a></li>
+            <li><a href="#features" id="navSkills">Kỹ Năng</a></li>
+            <li><a href="#story" id="navStory">Cốt Truyện</a></li>
+            <li><a href="#infinite-dream" id="navDream">Ảo Mộng</a></li>
+            <li><a href="login.html" id="navLogin">Đăng Nhập</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="#story" class="btn btn-primary btn-cta-nav" id="btnExploreTop">
+                <span>Khám Phá Ngay</span>
+                <i class="fa-solid fa-bolt btn-icon-pulse"></i>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Mở Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-badge">
+                <i class="fa-solid fa-eye"></i>
+                <span>Tsukuyomi Vô Hạn • Obito Uchiha</span>
+            </div>
+
+            <h1 class="hero-title" id="heroHeadline">KẾ HOẠCH NGUYỆT NHÃN</h1>
+            
+            <p class="hero-sub">
+                "Trong thế giới nhẫn giả này, kẻ phá vỡ luật lệ là rác rưởi. Nhưng kẻ bỏ rơi đồng đội còn tệ hơn cả rác rưởi. Ta sẽ tạo ra một thế giới hoàn hảo nơi không còn nỗi đau hay sự mất mát."
+                <span class="hero-quote">— Obito Uchiha (Tobi / Madara Giả Danh)</span>
+            </p>
+
+            <div class="hero-cta-group">
+                <button class="btn btn-primary" id="btnOpenStoryModal">
+                    <i class="fa-solid fa-scroll"></i>
+                    <span>Xem Cốt Truyện</span>
+                </button>
+                <a href="#features" class="btn btn-glass" id="btnLearnMore">
+                    <i class="fa-solid fa-circle-nodes"></i>
+                    <span>Tìm Hiểu Kỹ Năng</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Features / Skills Cards Section -->
+        <section class="section-features" id="features">
+            <div class="section-header">
+                <span class="section-tag">Sức Mạnh Vô Song</span>
+                <h2 class="section-title">TUYỆT KỸ KHÔNG GIAN & NHÃN THUẬT</h2>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card 1: Kamui -->
+                <div class="glass-card" id="cardKamui">
+                    <div>
+                        <div class="card-icon-wrap">
+                            <i class="fa-solid fa-tornado"></i>
+                        </div>
+                        <h3 class="card-title">Kamui (Không-Thời Gian)</h3>
+                        <p class="card-desc">
+                            Mangekyo Sharingan độc nhất cho phép Obito dịch chuyển bản thân hoặc mục tiêu vào một chiều không gian riêng biệt, biến cơ thể thành vô hình trước mọi đòn tấn công vật lý.
+                        </p>
+                    </div>
+                    <a href="#story" class="card-link" onclick="openStory('kamui')">
+                        Chi tiết thuật <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 2: Rinnegan & Ten-Tails -->
+                <div class="glass-card" id="cardRinnegan">
+                    <div>
+                        <div class="card-icon-wrap">
+                            <i class="fa-solid fa-dharmachakra"></i>
+                        </div>
+                        <h3 class="card-title">Rinnegan & Thập Vĩ</h3>
+                        <p class="card-desc">
+                            Sở hữu con mắt thần thánh Rinnegan và trở thành Jinchūriki của Thập Vĩ (Juubi), Obito nắm giữ Cầu Đạo Ngọc (Truth-Seeking Balls) cùng sức mạnh thần thánh của Lục Đạo.
+                        </p>
+                    </div>
+                    <a href="#story" class="card-link" onclick="openStory('rinnegan')">
+                        Sức mạnh Lục Đạo <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 3: Infinite Tsukuyomi -->
+                <div class="glass-card" id="cardDream">
+                    <div>
+                        <div class="card-icon-wrap">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+                        <h3 class="card-title">Ảo Mộng Vô Hạn</h3>
+                        <p class="card-desc">
+                            Phản chiếu Sharingan lên Mặt Trăng để thi triển Tsukuyomi Vô Hạn, giam giữ toàn bộ nhân loại trong thế giới ảo mộng vĩnh hằng, nơi mọi ước muốn đều trở thành hiện thực.
+                        </p>
+                    </div>
+                    <a href="#story" class="card-link" onclick="openStory('dream')">
+                        Thế giới mộng tưởng <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Showcase / Quote Banner -->
+        <section class="section-features" id="infinite-dream" style="padding-top: 0;">
+            <div class="showcase-banner">
+                <div class="banner-content">
+                    <span class="section-tag" style="color: #ff4766;">Bản Ngã & Lý Tưởng</span>
+                    <h3>"Ta Không Là Ai Cả. Ta Không Muốn Là Bất Cứ Ai."</h3>
+                    <p>
+                        Từ một cậu bé tốt bụng làng Lá mang trong mình ước mơ Hokage, trải qua nỗi đau tận cùng khi chứng kiến sự ra đi của Rin, Obito đã bước vào bóng tối để tìm kiếm thứ hòa bình vĩnh cửu.
+                    </p>
+                </div>
+                <div class="banner-action">
+                    <a href="login.html" class="btn btn-primary" style="white-space: nowrap;">
+                        <i class="fa-solid fa-mask"></i>
+                        <span>Gia Nhập Akatsuki</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sound / Video Control Pill Button -->
+    <button class="sound-toggle-btn" id="soundToggleBtn" title="Bật/Tắt âm thanh video">
+        <i class="fa-solid fa-volume-xmark" id="soundIcon"></i>
+        <span id="soundText">Âm thanh: Tắt</span>
+    </button>
+
+    <!-- Modal Cốt Truyện -->
+    <div class="modal" id="storyModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModalBtn">&times;</button>
+            <div class="card-icon-wrap" style="color: var(--primary-red); margin-bottom: 1rem;">
+                <i class="fa-solid fa-fire-flame-curved"></i>
+            </div>
+            <h3 class="card-title" id="modalTitle" style="font-size: 1.7rem;">Huyền Thoại Obito Uchiha</h3>
+            <p class="card-desc" id="modalDesc" style="font-size: 1.05rem; color: #d0d7e5;">
+                Obito Uchiha từng là thành viên của Đội Minato cùng với Kakashi Hatake và Nohara Rin. Sau sự kiện tại Cầu Kannabi, Obito được cứu sống bởi Uchiha Madara già cỗi. Khi nhìn thấy cái chết của Rin, Mangekyo Sharingan của Obito được thức tỉnh và cậu quyết định thực hiện kế hoạch Nguyệt Nhãn (Eye of the Moon Plan) để tạo ra thế giới không còn chia ly.
+            </p>
+            <div style="margin-top: 1.5rem; text-align: right;">
+                <button class="btn btn-primary" id="modalConfirmBtn">Đã Hiểu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-main" id="contact">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo-box">
+                    <div class="sharingan-icon">
+                        <span class="tomoe tomoe-1"></span>
+                        <span class="tomoe tomoe-2"></span>
+                        <span class="tomoe tomoe-3"></span>
+                    </div>
+                    <span class="logo-text">UCHIHA LEGACY</span>
+                </a>
+                <p>
+                    Dự án giao diện phong cách Anime Naruto kỷ niệm nhân vật Obito Uchiha & Kế hoạch Nguyệt Nhãn bí ẩn.
+                </p>
+                <div class="social-icons">
+                    <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-btn" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="social-btn" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Điều Hướng</h4>
+                <ul>
+                    <li><a href="#hero">Trang Chủ</a></li>
+                    <li><a href="#features">Kỹ Năng</a></li>
+                    <li><a href="#infinite-dream">Ảo Mộng Vô Hạn</a></li>
+                    <li><a href="login.html">Cổng Đăng Nhập</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Huyết Kế Giới Hạn</h4>
+                <ul>
+                    <li><a href="#features">Sharingan (3 Phẩy)</a></li>
+                    <li><a href="#features">Mangekyo Sharingan</a></li>
+                    <li><a href="#features">Rinnegan Lục Đạo</a></li>
+                    <li><a href="#features">Mộc Độn (Mokuton)</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Bản Quyền & Thông Tin</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    Thuộc sở hữu Masashi Kishimoto / Shueisha & TV Tokyo. Giao diện được thiết kế hiện đại với công nghệ HTML5, CSS3 Glassmorphism & Video Background.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Uchiha Legacy. All Rights Reserved. Designed with passion for Naruto Universe.</p>
+            <p>Made with <i class="fa-solid fa-heart" style="color: #ff1e42;"></i> & Dark Chakra</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactive Logic -->
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+            const icon = mobileBtn.querySelector('i');
+            if (navLinks.classList.contains('show')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close Mobile Menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show');
+                const icon = mobileBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Video Audio Toggle Control
+        const bgVideo = document.getElementById('bgVideo');
+        const soundToggleBtn = document.getElementById('soundToggleBtn');
+        const soundIcon = document.getElementById('soundIcon');
+        const soundText = document.getElementById('soundText');
+
+        soundToggleBtn.addEventListener('click', () => {
+            if (bgVideo.muted) {
+                bgVideo.muted = false;
+                soundIcon.className = 'fa-solid fa-volume-high';
+                soundText.textContent = 'Âm thanh: Bật';
+                soundToggleBtn.style.borderColor = '#ff1e42';
+                soundToggleBtn.style.boxShadow = '0 0 20px rgba(255, 30, 66, 0.6)';
+            } else {
+                bgVideo.muted = true;
+                soundIcon.className = 'fa-solid fa-volume-xmark';
+                soundText.textContent = 'Âm thanh: Tắt';
+                soundToggleBtn.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+                soundToggleBtn.style.boxShadow = 'none';
+            }
+        });
+
+        // Modal Story Functionality
+        const storyModal = document.getElementById('storyModal');
+        const btnOpenStoryModal = document.getElementById('btnOpenStoryModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modalConfirmBtn = document.getElementById('modalConfirmBtn');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+
+        const stories = {
+            default: {
+                title: 'Huyền Thoại Obito Uchiha',
+                desc: 'Obito Uchiha từng là thành viên của Đội Minato cùng với Kakashi Hatake và Nohara Rin. Sau sự kiện tại Cầu Kannabi, Obito được cứu sống bởi Uchiha Madara già cỗi. Khi nhìn thấy cái chết của Rin, Mangekyo Sharingan của Obito được thức tỉnh và cậu quyết định thực hiện kế hoạch Nguyệt Nhãn (Eye of the Moon Plan) để tạo ra thế giới không còn chia ly.'
+            },
+            kamui: {
+                title: 'Kamui - Chiều Không Gian Thần Thánh',
+                desc: 'Kamui là bí thuật Không-Thời Gian được thi triển qua Mangekyo Sharingan của Obito. Con mắt phải cho phép Obito hút bất cứ vật thể nào hoặc chính bản thân vào chiều không gian Kamui. Khi đối phương tấn công, phần cơ thể bị trúng đòn tự động được chuyển sang chiều không gian khác, khiến Obito hoàn toàn bất khả xâm phạm.'
+            },
+            rinnegan: {
+                title: 'Rinnegan & Jinchūriki Thập Vĩ',
+                desc: 'Sau khi cấy ghép Rinnegan của Madara vào mắt trái, Obito có thể triệu hồi Ngoại Đạo Ma Tượng (Gedo Mazo) và điều khiển Lục Đạo Luân Hồi. Khi phong ấn Thập Vĩ vào cơ thể, Obito tiến hóa thành Lục Đạo Tiên Nhân thứ hai với nguồn Chakra vô tận.'
+            },
+            dream: {
+                title: 'Tsukuyomi Vô Hạn - Giấc Mơ Vĩnh Hằng',
+                desc: 'Ảo thuật tối thượng của Kế hoạch Nguyệt Nhãn. Bằng cách chiếu ánh sáng Mangekyo Sharingan lên Mặt Trăng, toàn bộ sinh linh trên Trái Đất sẽ rơi vào ảo mộng nơi tất cả mong ước được thực hiện, loại bỏ hoàn toàn chiến tranh, hận thù và sự chia ly.'
+            }
+        };
+
+        function openStory(key) {
+            const data = stories[key] || stories.default;
+            modalTitle.textContent = data.title;
+            modalDesc.textContent = data.desc;
+            storyModal.classList.add('active');
+        }
+
+        btnOpenStoryModal.addEventListener('click', () => openStory('default'));
+        closeModalBtn.addEventListener('click', () => storyModal.classList.remove('active'));
+        modalConfirmBtn.addEventListener('click', () => storyModal.classList.remove('active'));
+
+        window.addEventListener('click', (e) => {
+            if (e.target === storyModal) {
+                storyModal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

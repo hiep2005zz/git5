@@ -1,1 +1,1095 @@
-<p>giao dien login</p>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cổng Nhẫn Giả | Đăng Nhập & Kích Hoạt Ấn Ký</title>
+    <meta name="description" content="Cổng đăng nhập và đăng ký thế giới Nhẫn Giả - Gia tộc Uchiha / Tổ chức Akatsuki.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-red: #ff1e42;
+            --primary-red-glow: rgba(255, 30, 66, 0.6);
+            --rinnegan-purple: #9b4de0;
+            --rinnegan-purple-glow: rgba(155, 77, 224, 0.5);
+            --dark-card: rgba(15, 10, 25, 0.72);
+            --border-glass: rgba(255, 255, 255, 0.14);
+            --input-bg: rgba(255, 255, 255, 0.07);
+            --input-border: rgba(255, 255, 255, 0.18);
+            --text-main: #f0f3f8;
+            --text-muted: #a0aec0;
+            --font-display: 'Cinzel', 'Orbitron', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #07070c;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        /* Video Background Container */
+        .video-bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .video-bg-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1);
+            filter: contrast(112%) saturate(118%) brightness(102%);
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        /* Mystical Overlay (20-25% tối pha đỏ tím huyền ảo) */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 75% 20%, rgba(155, 77, 224, 0.16) 0%, transparent 60%),
+                radial-gradient(circle at 20% 80%, rgba(255, 30, 66, 0.16) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(7, 7, 12, 0.22) 0%, rgba(10, 8, 16, 0.15) 50%, rgba(7, 7, 12, 0.28) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Back to Home Button */
+        .btn-back-home {
+            position: fixed;
+            top: 1.5rem;
+            left: 2rem;
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.65rem 1.4rem;
+            background: rgba(18, 14, 28, 0.65);
+            border: 1px solid var(--border-glass);
+            border-radius: 50px;
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
+        }
+
+        .btn-back-home:hover {
+            background: rgba(255, 30, 66, 0.2);
+            border-color: var(--primary-red);
+            box-shadow: 0 0 20px var(--primary-red-glow);
+            transform: translateX(-4px);
+        }
+
+        /* Sound Control Floating Pill */
+        .sound-toggle-btn {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 99;
+            background: rgba(18, 15, 28, 0.75);
+            color: #fff;
+            border: 1px solid var(--border-glass);
+            padding: 10px 16px;
+            border-radius: 40px;
+            backdrop-filter: blur(12px);
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+        }
+
+        .sound-toggle-btn:hover {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 15px var(--primary-red-glow);
+        }
+
+        /* Main Portal Auth Card */
+        .auth-container {
+            width: 100%;
+            max-width: 490px;
+            background: var(--dark-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.75),
+                0 0 35px rgba(255, 30, 66, 0.25),
+                0 0 50px rgba(155, 77, 224, 0.15);
+            padding: 2.5rem 2.2rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+            transition: var(--transition);
+            animation: cardAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes cardAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(25px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .auth-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-red), var(--rinnegan-purple), transparent);
+        }
+
+        /* Card Header & Sharingan Logo */
+        .card-header {
+            text-align: center;
+            margin-bottom: 1.8rem;
+        }
+
+        .portal-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ff2a4b 30%, #75000f 85%);
+            border: 2px solid #ff4766;
+            box-shadow: 0 0 20px var(--primary-red-glow);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 0.8rem;
+            animation: rotateSharingan 22s linear infinite;
+        }
+
+        .portal-icon::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .portal-icon .tomoe {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .portal-icon .tomoe-1 { top: 9px; left: 19px; }
+        .portal-icon .tomoe-2 { bottom: 11px; left: 10px; }
+        .portal-icon .tomoe-3 { bottom: 11px; right: 10px; }
+
+        @keyframes rotateSharingan {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .portal-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #ffffff, #ff7e90, #c499f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .portal-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Tab Switcher */
+        .auth-tabs {
+            display: flex;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px 8px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(255, 30, 66, 0.75), rgba(155, 77, 224, 0.75));
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(255, 30, 66, 0.35);
+        }
+
+        /* Forms Wrapper */
+        .form-section {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .input-group {
+            margin-bottom: 1.25rem;
+            position: relative;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 0.45rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .input-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .input-control {
+            width: 100%;
+            padding: 0.85rem 2.8rem 0.85rem 2.8rem;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 12px;
+            color: #ffffff;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .input-control.no-right-icon {
+            padding-right: 1.2rem;
+        }
+
+        .input-control:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--primary-red);
+            box-shadow: 0 0 16px rgba(255, 30, 66, 0.35);
+        }
+
+        .input-control:focus + .input-icon,
+        .input-control:focus ~ .input-icon {
+            color: var(--primary-red);
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 14px;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .toggle-password:hover {
+            color: #ffffff;
+        }
+
+        /* Form Options (Remember & Forgot) */
+        .form-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            accent-color: var(--primary-red);
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+        }
+
+        .forgot-link {
+            color: #ff7e90;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .forgot-link:hover {
+            color: #ffffff;
+            text-shadow: 0 0 8px var(--primary-red-glow);
+            text-decoration: underline;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%;
+            padding: 0.95rem;
+            background: linear-gradient(135deg, #e50914 0%, #b80024 50%, #7e16a3 100%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50px;
+            color: #ffffff;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(229, 9, 20, 0.45), 0 4px 15px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(255, 30, 66, 0.75), 0 0 20px rgba(155, 77, 224, 0.6);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Sample Account Hint Box */
+        .hint-box {
+            margin-top: 1.5rem;
+            padding: 0.85rem 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px dashed rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .hint-box code {
+            color: #ff8ca1;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .btn-autofill {
+            background: rgba(255, 30, 66, 0.2);
+            border: 1px solid var(--primary-red);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .btn-autofill:hover {
+            background: var(--primary-red);
+            box-shadow: 0 0 10px var(--primary-red-glow);
+        }
+
+        /* Modal Quên Mật Khẩu */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: #120e20;
+            border: 1px solid var(--primary-red);
+            box-shadow: 0 0 45px rgba(255, 30, 66, 0.35);
+            border-radius: 20px;
+            max-width: 480px;
+            width: 100%;
+            padding: 2.2rem;
+            position: relative;
+            transform: scale(0.95);
+            transition: var(--transition);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        /* Toast Notification & Shake Animation */
+        .notification-toast {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            padding: 1rem 1.4rem;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2000;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transform: translateX(120%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .notification-toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .notification-toast.success {
+            background: rgba(16, 185, 129, 0.9);
+            border: 1px solid #34d399;
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.45);
+        }
+
+        .notification-toast.error {
+            background: rgba(225, 29, 72, 0.92);
+            border: 1px solid #fb7185;
+            box-shadow: 0 0 25px rgba(225, 29, 72, 0.55);
+        }
+
+        .shake {
+            animation: shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        @media (max-width: 540px) {
+            .auth-container {
+                padding: 2rem 1.4rem;
+            }
+            .btn-back-home {
+                top: 1rem;
+                left: 1rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+            .portal-title {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video Nền Mới (190558-888122702_medium.mp4) -->
+    <div class="video-bg-container">
+        <video id="loginBgVideo" autoplay muted loop playsinline poster="">
+            <source src="190558-888122702_medium.mp4" type="video/mp4">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-mysterious-fog-in-a-dark-forest-41551-large.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ thẻ video.
+        </video>
+    </div>
+
+    <!-- Overlay huyền bí trong trẻo (20-25% tối) -->
+    <div class="video-overlay"></div>
+
+    <!-- Nút Về Trang Chủ -->
+    <a href="index.html" class="btn-back-home" id="btnBackHome">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Về Trang Chủ</span>
+    </a>
+
+    <!-- Nút Âm thanh video -->
+    <button class="sound-toggle-btn" id="soundToggleBtn" title="Bật/Tắt âm thanh video">
+        <i class="fa-solid fa-volume-xmark" id="soundIcon"></i>
+        <span id="soundText">Âm thanh: Tắt</span>
+    </button>
+
+    <!-- Khung Đăng Nhập / Đăng Ký (Glassmorphism Portal Card) -->
+    <div class="auth-container" id="authCard">
+        <!-- Logo Sharingan -->
+        <div class="card-header">
+            <div class="portal-icon">
+                <span class="tomoe tomoe-1"></span>
+                <span class="tomoe tomoe-2"></span>
+                <span class="tomoe tomoe-3"></span>
+            </div>
+            <h1 class="portal-title" id="portalHeader">CỔNG NHẪN GIẢ</h1>
+            <p class="portal-subtitle">Khai mở Nhẫn Thuật • Gia Tộc Uchiha</p>
+        </div>
+
+        <!-- Tab Chuyển Đổi -->
+        <div class="auth-tabs">
+            <button type="button" class="tab-btn active" id="tabLoginBtn">ĐĂNG NHẬP NHẪN GIẢ</button>
+            <button type="button" class="tab-btn" id="tabRegisterBtn">KÍCH HOẠT ẤN KÝ</button>
+        </div>
+
+        <!-- FORM ĐĂNG NHẬP -->
+        <form id="loginForm" class="form-section active" autocomplete="off">
+            <div class="input-group">
+                <label class="input-label" for="loginEmail">Tên Nhẫn Giả hoặc Email</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-user-ninja input-icon"></i>
+                    <input type="text" id="loginEmail" class="input-control no-right-icon" placeholder="ninja@uchiha.com" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" for="loginPassword">Mật Khẩu Ấn Chú</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-key input-icon"></i>
+                    <input type="password" id="loginPassword" class="input-control" placeholder="••••••••" required>
+                    <i class="fa-solid fa-eye toggle-password" id="toggleLoginPass" title="Ẩn/Hiện mật khẩu"></i>
+                </div>
+            </div>
+
+            <div class="form-options">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="rememberMe" checked>
+                    <span>Ghi nhớ chakra</span>
+                </label>
+                <a href="javascript:void(0)" class="forgot-link" id="forgotPassLink">Quên ấn chú? (Gửi Gmail)</a>
+            </div>
+
+            <button type="submit" class="btn-submit" id="btnSubmitLogin">
+                <span>KÍCH HOẠT ẢO THUẬT</span>
+                <i class="fa-solid fa-fire-burner"></i>
+            </button>
+
+            <!-- Tài khoản mẫu để test nhanh -->
+            <div class="hint-box">
+                <div>
+                    <div><strong>Test Ninja:</strong> <code>itachi@uchiha.com</code></div>
+                    <div><strong>Mật khẩu:</strong> <code>tsukuyomi123</code></div>
+                </div>
+                <button type="button" class="btn-autofill" id="btnAutoFill" title="Tự động điền tài khoản mẫu">Điền Nhanh</button>
+            </div>
+        </form>
+
+        <!-- FORM ĐĂNG KÝ -->
+        <form id="registerForm" class="form-section" autocomplete="off">
+            <div class="input-group">
+                <label class="input-label" for="regName">Danh Xưng Nhẫn Giả</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-shield-halved input-icon"></i>
+                    <input type="text" id="regName" class="input-control no-right-icon" placeholder="Ví dụ: Obito Uchiha" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" for="regEmail">Email Ninja (Nhận thư Gmail)</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                    <input type="email" id="regEmail" class="input-control no-right-icon" placeholder="obito@gmail.com" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" for="regPassword">Mật Khẩu Phong Ấn</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-lock input-icon"></i>
+                    <input type="password" id="regPassword" class="input-control" placeholder="Tối thiểu 6 ký tự" minlength="6" required>
+                    <i class="fa-solid fa-eye toggle-password" id="toggleRegPass" title="Ẩn/Hiện mật khẩu"></i>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" for="regConfirmPassword">Xác Nhận Mật Khẩu</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-circle-check input-icon"></i>
+                    <input type="password" id="regConfirmPassword" class="input-control" placeholder="Nhập lại mật khẩu" minlength="6" required>
+                    <i class="fa-solid fa-eye toggle-password" id="toggleRegConfirmPass" title="Ẩn/Hiện mật khẩu"></i>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit" id="btnSubmitRegister" style="margin-top: 0.5rem;">
+                <span>LƯU DATABASE & KÍCH HOẠT</span>
+                <i class="fa-solid fa-bolt"></i>
+            </button>
+        </form>
+    </div>
+
+    <!-- MODAL QUÊN MẬT KHẨU (GỬI GMAIL & ĐẶT LẠI MẬT KHẨU) -->
+    <div class="modal" id="forgotModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeForgotModal">&times;</button>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <div class="portal-icon" style="width: 44px; height: 44px; margin-bottom: 0.4rem;">
+                    <span class="tomoe tomoe-1"></span>
+                </div>
+                <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: #fff;">KHÔI PHỤC ẤN CHÚ</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">Hệ thống sẽ gửi mã OTP bí truyền về Gmail của bạn</p>
+            </div>
+
+            <!-- BƯỚC 1: NHẬP EMAIL ĐỂ GỬI MÃ OTP -->
+            <div id="forgotStep1">
+                <div class="input-group">
+                    <label class="input-label" for="forgotEmail">Email đã đăng ký</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-envelope input-icon"></i>
+                        <input type="email" id="forgotEmail" class="input-control no-right-icon" placeholder="ninja@gmail.com" required>
+                    </div>
+                </div>
+                <button type="button" class="btn-submit" id="btnSendOtp">
+                    <span>GỬI MÃ VỀ GMAIL</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+
+            <!-- BƯỚC 2: NHẬP OTP & ĐẶT LẠI MẬT KHẨU MỚI -->
+            <div id="forgotStep2" style="display: none;">
+                <div class="input-group">
+                    <label class="input-label" for="otpCode">Mã OTP (6 Chữ Số Trong Gmail)</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-shield-halved input-icon"></i>
+                        <input type="text" id="otpCode" class="input-control no-right-icon" placeholder="123456" maxlength="6" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label" for="newPassword">Mật Khẩu Mới</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input type="password" id="newPassword" class="input-control" placeholder="Tối thiểu 6 ký tự" minlength="6" required>
+                        <i class="fa-solid fa-eye toggle-password" id="toggleNewPass"></i>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-submit" id="btnResetPassSubmit">
+                    <span>CẬP NHẬT MẬT KHẨU MỚI</span>
+                    <i class="fa-solid fa-key"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="notification-toast" id="toast">
+        <i class="fa-solid fa-circle-info" id="toastIcon"></i>
+        <span id="toastMsg">Thông báo</span>
+    </div>
+
+    <!-- JavaScript Logic Kết Nối API Backend SQLite & Gmail -->
+    <script>
+        const API_BASE = window.location.origin.includes('5000') 
+            ? window.location.origin 
+            : 'http://localhost:5000';
+
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toastMsg');
+        const toastIcon = document.getElementById('toastIcon');
+        const authCard = document.getElementById('authCard');
+        let toastTimeout;
+
+        function showNotification(message, type = 'success') {
+            clearTimeout(toastTimeout);
+            toastMsg.textContent = message;
+            toast.className = `notification-toast show ${type}`;
+            if (type === 'success') {
+                toastIcon.className = 'fa-solid fa-circle-check';
+            } else {
+                toastIcon.className = 'fa-solid fa-triangle-exclamation';
+            }
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        function triggerShake() {
+            authCard.classList.remove('shake');
+            void authCard.offsetWidth;
+            authCard.classList.add('shake');
+        }
+
+        // Chuyển Tab
+        const tabLoginBtn = document.getElementById('tabLoginBtn');
+        const tabRegisterBtn = document.getElementById('tabRegisterBtn');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        tabLoginBtn.addEventListener('click', () => {
+            tabLoginBtn.classList.add('active');
+            tabRegisterBtn.classList.remove('active');
+            loginForm.classList.add('active');
+            registerForm.classList.remove('active');
+        });
+
+        tabRegisterBtn.addEventListener('click', () => {
+            tabRegisterBtn.classList.add('active');
+            tabLoginBtn.classList.remove('active');
+            registerForm.classList.add('active');
+            loginForm.classList.remove('active');
+        });
+
+        // Ẩn / Hiện mật khẩu
+        function setupTogglePassword(toggleId, inputId) {
+            const toggle = document.getElementById(toggleId);
+            const input = document.getElementById(inputId);
+            if (!toggle || !input) return;
+            toggle.addEventListener('click', () => {
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    toggle.classList.replace('fa-eye', 'fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    toggle.classList.replace('fa-eye-slash', 'fa-eye');
+                }
+            });
+        }
+        setupTogglePassword('toggleLoginPass', 'loginPassword');
+        setupTogglePassword('toggleRegPass', 'regPassword');
+        setupTogglePassword('toggleRegConfirmPass', 'regConfirmPassword');
+        setupTogglePassword('toggleNewPass', 'newPassword');
+
+        // Điền nhanh mẫu
+        document.getElementById('btnAutoFill').addEventListener('click', () => {
+            document.getElementById('loginEmail').value = 'itachi@uchiha.com';
+            document.getElementById('loginPassword').value = 'tsukuyomi123';
+            showNotification('Đã nạp tài khoản mẫu Itachi Uchiha!', 'success');
+        });
+
+        // Âm thanh video
+        const loginBgVideo = document.getElementById('loginBgVideo');
+        const soundToggleBtn = document.getElementById('soundToggleBtn');
+        const soundIcon = document.getElementById('soundIcon');
+        const soundText = document.getElementById('soundText');
+
+        soundToggleBtn.addEventListener('click', () => {
+            if (loginBgVideo.muted) {
+                loginBgVideo.muted = false;
+                soundIcon.className = 'fa-solid fa-volume-high';
+                soundText.textContent = 'Âm thanh: Bật';
+                soundToggleBtn.style.borderColor = '#ff1e42';
+                soundToggleBtn.style.boxShadow = '0 0 15px rgba(255, 30, 66, 0.6)';
+            } else {
+                loginBgVideo.muted = true;
+                soundIcon.className = 'fa-solid fa-volume-xmark';
+                soundText.textContent = 'Âm thanh: Tắt';
+                soundToggleBtn.style.borderColor = 'rgba(255, 255, 255, 0.14)';
+                soundToggleBtn.style.boxShadow = 'none';
+            }
+        });
+
+        // 1. XỬ LÝ ĐĂNG KÝ (GỬI LƯU VÀO DATABASE SQLITE)
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('regName').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+
+            if (password !== confirmPassword) {
+                triggerShake();
+                showNotification('Mật khẩu xác nhận không khớp!', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/api/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+
+                const data = await res.json();
+                if (data.success) {
+                    showNotification(`Đã lưu vào Database! Chào mừng ${name}.`, 'success');
+                    registerForm.reset();
+                    setTimeout(() => {
+                        tabLoginBtn.click();
+                        document.getElementById('loginEmail').value = email;
+                        document.getElementById('loginPassword').focus();
+                    }, 1200);
+                } else {
+                    triggerShake();
+                    showNotification(data.message || 'Lỗi đăng ký!', 'error');
+                }
+            } catch (err) {
+                triggerShake();
+                showNotification('Không thể kết nối đến Database Backend Server (Port 5000)!', 'error');
+            }
+        });
+
+        // 2. XỬ LÝ ĐĂNG NHẬP (ĐỐI CHIẾU DATABASE SQLITE)
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const res = await fetch(`${API_BASE}/api/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await res.json();
+                if (data.success) {
+                    // Lưu đầy đủ phiên đăng nhập
+                    const ninjaUser = {
+                        id: data.user.id,
+                        name: data.user.name,
+                        email: data.user.email,
+                        role: data.user.role || 'Shinobi',
+                        rank: data.user.rank || 'Genin',
+                        village: data.user.village || 'Nhẫn giả tự do',
+                        loginTime: new Date().toISOString()
+                    };
+                    localStorage.setItem('current_ninja', JSON.stringify(ninjaUser));
+
+                    // Hiển thị hiệu ứng triệu hồi ấn chú & giải trừ ảo thuật
+                    showNotification(`Ảo thuật giải trừ - Chào mừng Nhẫn giả ${data.user.name}!`, 'success');
+                    
+                    // Tự động chuyển hướng sang Đại sảnh các Làng sau 1.5s
+                    setTimeout(() => {
+                        window.location.href = 'village.html';
+                    }, 1500);
+                } else {
+                    triggerShake();
+                    showNotification(data.message || 'Sai tài khoản hoặc mật khẩu!', 'error');
+                }
+            } catch (err) {
+                // Hỗ trợ Fallback nếu server chưa chạy
+                const accounts = JSON.parse(localStorage.getItem('ninja_accounts')) || [];
+                const found = accounts.find(a => (a.email === email || a.name === email) && a.password === password);
+                if (found) {
+                    const fallbackUser = {
+                        name: found.name,
+                        email: found.email,
+                        role: found.role || 'Shinobi',
+                        rank: 'Genin',
+                        village: found.village || 'Nhẫn giả tự do'
+                    };
+                    localStorage.setItem('current_ninja', JSON.stringify(fallbackUser));
+                    showNotification(`Ảo thuật giải trừ - Chào mừng Nhẫn giả ${found.name}!`, 'success');
+                    setTimeout(() => {
+                        window.location.href = 'village.html';
+                    }, 1500);
+                } else {
+                    triggerShake();
+                    showNotification('Không thể kết nối đến Database Backend Server (Port 5000)!', 'error');
+                }
+            }
+        });
+
+        // 3. XỬ LÝ QUÊN MẬT KHẨU & GỬI GMAIL
+        const forgotModal = document.getElementById('forgotModal');
+        const forgotPassLink = document.getElementById('forgotPassLink');
+        const closeForgotModal = document.getElementById('closeForgotModal');
+        const forgotStep1 = document.getElementById('forgotStep1');
+        const forgotStep2 = document.getElementById('forgotStep2');
+        const btnSendOtp = document.getElementById('btnSendOtp');
+        const btnResetPassSubmit = document.getElementById('btnResetPassSubmit');
+        let currentResetEmail = '';
+
+        forgotPassLink.addEventListener('click', () => {
+            forgotModal.classList.add('active');
+            forgotStep1.style.display = 'block';
+            forgotStep2.style.display = 'none';
+            const curEmail = document.getElementById('loginEmail').value.trim();
+            if (curEmail) document.getElementById('forgotEmail').value = curEmail;
+        });
+
+        closeForgotModal.addEventListener('click', () => {
+            forgotModal.classList.remove('active');
+        });
+
+        // Gửi mã OTP về Gmail
+        btnSendOtp.addEventListener('click', async () => {
+            const email = document.getElementById('forgotEmail').value.trim();
+            if (!email) {
+                showNotification('Vui lòng nhập email!', 'error');
+                return;
+            }
+
+            btnSendOtp.disabled = true;
+            btnSendOtp.innerHTML = `<span>Đang gửi mã...</span> <i class="fa-solid fa-spinner fa-spin"></i>`;
+
+            try {
+                const res = await fetch(`${API_BASE}/api/forgot-password`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await res.json();
+                if (data.success) {
+                    currentResetEmail = email;
+                    showNotification(data.message, 'success');
+                    
+                    // Nếu ở mock mode (chưa điền pass Gmail trong .env), tự điền mã OTP để trải nghiệm ngay
+                    if (data.mockMode && data.otp) {
+                        setTimeout(() => {
+                            showNotification(`[Mã OTP thử nghiệm]: ${data.otp}`, 'success');
+                            document.getElementById('otpCode').value = data.otp;
+                        }, 1200);
+                    }
+
+                    forgotStep1.style.display = 'none';
+                    forgotStep2.style.display = 'block';
+                } else {
+                    showNotification(data.message, 'error');
+                }
+            } catch (err) {
+                showNotification('Lỗi kết nối máy chủ gửi Gmail!', 'error');
+            } finally {
+                btnSendOtp.disabled = false;
+                btnSendOtp.innerHTML = `<span>GỬI MÃ VỀ GMAIL</span> <i class="fa-solid fa-paper-plane"></i>`;
+            }
+        });
+
+        // Xác nhận OTP & Đổi mật khẩu mới
+        btnResetPassSubmit.addEventListener('click', async () => {
+            const otp = document.getElementById('otpCode').value.trim();
+            const newPassword = document.getElementById('newPassword').value;
+
+            if (!otp || !newPassword) {
+                showNotification('Vui lòng nhập mã OTP và mật khẩu mới!', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/api/reset-password`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: currentResetEmail,
+                        otp: otp,
+                        newPassword: newPassword
+                    })
+                });
+
+                const data = await res.json();
+                if (data.success) {
+                    showNotification(data.message, 'success');
+                    forgotModal.classList.remove('active');
+                    document.getElementById('loginEmail').value = currentResetEmail;
+                    document.getElementById('loginPassword').value = newPassword;
+                } else {
+                    showNotification(data.message, 'error');
+                }
+            } catch (err) {
+                showNotification('Lỗi cập nhật mật khẩu!', 'error');
+            }
+        });
+    </script>
+</body>
+</html>
